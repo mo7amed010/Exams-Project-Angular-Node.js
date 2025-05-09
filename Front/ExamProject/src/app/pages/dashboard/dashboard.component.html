@@ -1,0 +1,45 @@
+<div class="container m-5 h-100">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Exams Dashboard</h1>
+    <button class="btn btn-primary" routerLink="/exams/create">Create New Exam</button>
+  </div>
+
+  @if (loading) {
+    <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  }
+
+  @if (error) {
+    <div class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+  }
+
+  @if (!loading && !error) {
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      @for (exam of exams; track exam._id) {
+        <div class="col">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{ exam.title }}</h5>
+              <p class="card-text">{{ exam.description }}</p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 p-4">
+              <div class="d-flex gap-2">
+                <button class="btn btn-primary flex-grow-1" (click)="editExam(exam._id)">
+                  Edit Exam
+                </button>
+                <button class="btn btn-danger flex-grow-1" (click)="deleteExam(exam._id)">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

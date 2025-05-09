@@ -1,0 +1,38 @@
+<div class="mt-5 container d-flex justify-content-center">
+  <div class="w-75">
+    <h1 class="text-center">Add New Exam</h1>
+    <form class="mb-5" (submit)="add()" [formGroup]="examForm">
+      <div class="mb-3 mt-3">
+        <label for="title" class="form-label">Exam Title</label>
+        <input type="text" name="name" class="form-control" id="title" aria-describedby="emailHelp" formControlName="title">
+        @if(getTitle.touched){
+          @if(getTitle.hasError('required')){
+            <div id="emailHelp" class="form-text text-danger">Title is Required</div>
+          }
+          @if(getTitle.hasError('minlength')){
+            <div id="emailHelp" class="form-text text-danger">Title must be more than 3 char</div>
+          }
+        }
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="description" class="form-label">Exam Description</label>
+        <input type="text" name="price" class="form-control" id="description" aria-describedby="emailHelp" formControlName="description">
+        @if(getDescription.touched){
+          @if(getDescription.hasError('required')){
+            <div id="emailHelp" class="form-text text-danger">Description is Required</div>
+          }
+        }
+      </div>
+      <div class="mb-3">
+        <label for="created_by" class="form-label">User ID</label>
+        <input type="text" name="" class="form-control" id="created_by" formControlName="created_by">
+        @if(getUserId.touched){
+          @if(getUserId.hasError('required')){
+            <div id="emailHelp" class="form-text text-danger">User ID is Required</div>
+          }
+        }
+      </div>
+      <button type="submit" class="btn btn-primary w-100 mt-4">Add New Exam</button>
+    </form>
+  </div>
+</div>

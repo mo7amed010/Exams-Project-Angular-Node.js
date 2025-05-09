@@ -1,0 +1,63 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-center mb-4">Edit Questions</h1>
+    <a class="btn btn-success" [routerLink]="['/exams', examId, 'questions', 'add']">Add Question</a>
+  </div>
+  
+  <div class="accordion" id="questionsAccordion">
+    @for (question of questions; track question._id; let i = $index) {
+      <div class="accordion-item m-5">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#question' + i">
+            Question {{i + 1}}
+          </button>
+        </h2>
+        <div [id]="'question' + i" class="accordion-collapse collapse" data-bs-parent="#questionsAccordion">
+          <div class="accordion-body">
+            <form [formGroup]="questionForms[i]" (ngSubmit)="updateQuestion(i)">
+              <div class="mb-3">
+                <label class="form-label">Question</label>
+                <input type="text" class="form-control" formControlName="question">
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Option 1</label>
+                <input type="text" class="form-control" formControlName="option1">
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Option 2</label>
+                <input type="text" class="form-control" formControlName="option2">
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Option 3</label>
+                <input type="text" class="form-control" formControlName="option3">
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Option 4</label>
+                <input type="text" class="form-control" formControlName="option4">
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label">Correct Answer</label>
+                <select class="form-select" formControlName="correctAnswer">
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                  <option value="4">Option 4</option>
+                </select>
+              </div>
+              
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary" [disabled]="!questionForms[i].valid">Update Question</button>
+                <button type="button" class="btn btn-danger" (click)="deleteQuestion(i)">Delete Question</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div> 
