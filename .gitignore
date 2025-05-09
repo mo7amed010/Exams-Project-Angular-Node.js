@@ -1,0 +1,14 @@
+# Frontend
+/Front/ExamProject/node_modules/
+/Front/ExamProject/dist/
+/Front/ExamProject/.angular/cache/
+
+# Backend
+/Back/node_modules/
+/Back/.env
+/Back/dist/
+
+# General
+*.log
+.DS_Store
+

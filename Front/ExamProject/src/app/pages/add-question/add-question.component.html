@@ -1,0 +1,73 @@
+<div class="container m-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center mb-0">Add New Question</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label">Question</label>
+              <input type="text" class="form-control" formControlName="question">
+              @if (questionForm.get('question')?.touched && questionForm.get('question')?.hasError('required')) {
+                <div class="text-danger">Question is required</div>
+              }
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Option 1</label>
+              <input type="text" class="form-control" formControlName="option1">
+              @if (questionForm.get('option1')?.touched && questionForm.get('option1')?.hasError('required')) {
+                <div class="text-danger">Option 1 is required</div>
+              }
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Option 2</label>
+              <input type="text" class="form-control" formControlName="option2">
+              @if (questionForm.get('option2')?.touched && questionForm.get('option2')?.hasError('required')) {
+                <div class="text-danger">Option 2 is required</div>
+              }
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Option 3</label>
+              <input type="text" class="form-control" formControlName="option3">
+              @if (questionForm.get('option3')?.touched && questionForm.get('option3')?.hasError('required')) {
+                <div class="text-danger">Option 3 is required</div>
+              }
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Option 4</label>
+              <input type="text" class="form-control" formControlName="option4">
+              @if (questionForm.get('option4')?.touched && questionForm.get('option4')?.hasError('required')) {
+                <div class="text-danger">Option 4 is required</div>
+              }
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Correct Answer</label>
+              <select class="form-select" formControlName="correctAnswer">
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                <option value="4">Option 4</option>
+              </select>
+            </div>
+            
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary flex-grow-1" [disabled]="!questionForm.valid">
+                Add Question
+              </button>
+              <button type="button" class="btn btn-secondary flex-grow-1" (click)="cancel()">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Answer the Questions</h2>
+  <div class="m-5">
+    <form [formGroup]="examForm" (ngSubmit)="onSubmit()">
+      @for (question of questions; track question._id; let i = $index) {
+        <div class="mb-4">
+          <label class="fw-bold d-block mb-2">{{ i + 1 }}. {{ question.q }}</label>
+          @for (option of question.options; track $index; let j = $index) {
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                [formControlName]="'q' + i"
+                [value]="option"
+                [id]="'q' + i + '-' + j"
+              />
+              <label class="form-check-label" [for]="'q' + i + '-' + j">
+                {{ option }}
+              </label>
+            </div>
+          }
+        </div>
+      }
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
