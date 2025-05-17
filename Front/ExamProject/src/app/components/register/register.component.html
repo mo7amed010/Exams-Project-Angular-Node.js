@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="login-box">
+    <div class="left">
+    
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      
+        <input type="text" id="username" formControlName="username" placeholder="Enter your username" required>
+        <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="error">
+          Username must be at least 4 characters.
+        </div>
+
+       
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email" required>
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+          Valid email is required.
+        </div>
+
+       
+        <input type="password" id="password" formControlName="password" placeholder="Enter your password" required>
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+          Password must be at least 6 characters.
+        </div>
+
+       
+        <select id="role" formControlName="role" required>
+          <option value="student">Student</option>
+          <option value="admin">Admin</option>
+        </select>
+        <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" class="error">
+          Role is required.
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid">Sign Up</button>
+      </form>
+
+      <p>Already have an account? <a routerLink="/login">Login</a></p>
+    </div>
+
+    <div class="right">
+      <img src="https://img.freepik.com/free-vector/college-entrance-exam-concept-illustration_114360-10202.jpg?ga=GA1.1.1955859010.1732563926&semt=ais_hybrid&w=740" alt="Register image">
+    </div>
+  </div>
+</div>

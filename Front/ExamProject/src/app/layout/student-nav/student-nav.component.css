@@ -1,4 +1,30 @@
-nav a{
-  margin-left: 10px;
+.navbar {
+  background-color: white;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.navbar-brand {
+  color: #ff7f00;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #ff7f00;
+  font-weight: 500;
+  margin-left: 15px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
   color: white;
+  background-color: #ff7f00;
+  border-radius: 5px;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+  color: #fff;
+  background-color: #ff7f00;
+  border-radius: 5px;
 }

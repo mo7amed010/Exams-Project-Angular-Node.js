@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ExamService } from '../../services/exam.service';
 import { Router } from '@angular/router';
 import { Iexam } from '../../models/iexam';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-create-exam',
@@ -12,7 +13,11 @@ import { Iexam } from '../../models/iexam';
   styleUrl: './create-exam.component.css'
 })
 export class CreateExamComponent implements OnInit {
-  constructor(private examService: ExamService, private router: Router) {}
+  constructor(
+    private examService: ExamService, 
+    private router: Router,
+    private tokenService: TokenService
+  ) {}
 
   prodct!: Iexam;
 
@@ -23,7 +28,10 @@ export class CreateExamComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.examForm.reset(); 
+    this.examForm.reset();
+    // Set the user ID from token
+    const userId = this.tokenService.getUserIdFromToken();
+    this.examForm.controls.created_by.setValue(userId);
   }
 
   get getTitle() {

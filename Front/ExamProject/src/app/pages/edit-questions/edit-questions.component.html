@@ -1,7 +1,11 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="text-center mb-4">Edit Questions</h1>
-    <a class="btn btn-success" [routerLink]="['/exams', examId, 'questions', 'add']">Add Question</a>
+<a class="btn" style="background-color: white; color: #ff7f00; border: 1px solid #ff7f00;" 
+   [routerLink]="['/exams', examId, 'questions', 'add']">
+   Add Question
+</a>
+
   </div>
   
   <div class="accordion" id="questionsAccordion">
