@@ -23,15 +23,9 @@
           }
         }
       </div>
-      <div class="mb-3">
-        <label for="created_by" class="form-label">User ID</label>
-        <input type="text" name="" class="form-control" id="created_by" formControlName="created_by">
-        @if(getUserId.touched){
-          @if(getUserId.hasError('required')){
-            <div id="emailHelp" class="form-text text-danger">User ID is Required</div>
-          }
-        }
-      </div>
+      <!-- Hidden User ID input field -->
+      <input type="hidden" id="created_by" formControlName="created_by">
+      
       <button type="submit" class="btn btn-primary w-100 mt-4">Add New Exam</button>
     </form>
   </div>

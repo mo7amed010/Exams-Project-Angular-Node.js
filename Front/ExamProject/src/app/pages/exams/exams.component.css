@@ -1,0 +1,51 @@
+.exam-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;  
+  justify-content: center;
+}
+
+.exam-card {
+  width: calc(25% - 20px); 
+  height: 300px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.exam-card:hover {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.take-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.take-btn:hover {
+  background-color: #0056b3;
+}

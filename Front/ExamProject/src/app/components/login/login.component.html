@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="login-box">
+    <div class="left">
+      <h2>Login</h2>
+      
+      <!-- Error message -->
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- Email Field -->
+        <div class="form-group">
+          <input 
+            id="email" 
+            type="email" 
+            formControlName="email" 
+            placeholder="Enter your email"  
+            class="form-control" 
+          />
+          <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+            Valid email is required.
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <input 
+            id="password" 
+            type="password" 
+            formControlName="password" 
+            placeholder="Enter your password"  
+            class="form-control" 
+          />
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+            Password must be at least 6 characters.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Log in</button>
+        
+        <!-- Register Link -->
+        <div class="register-link">
+          Don't have an account? <a routerLink="/register">Register here</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Right Image Section -->
+    <div class="right">
+      <img 
+        src="https://img.freepik.com/free-vector/college-entrance-exam-concept-illustration_114360-10202.jpg?ga=GA1.1.1955859010.1732563926&semt=ais_hybrid&w=740" 
+        alt="Login image"
+      />
+    </div>
+  </div>
+</div>
